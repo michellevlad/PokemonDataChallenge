@@ -127,7 +127,7 @@ def main():
     print("Let's write this brand new information in our pokedex database")
     write_data_to_psql(df, 'pokedex.gender_pokemons')
     print("Extra part of dbt: execute model gender_pokemon_distribution")
-    # os.system("cd pokedex_models && dbt run --select pokedex.gender_pokemon_distribution")
+    os.system("cd pokedex_models && dbt run --select pokedex.gender_pokemon_distribution")
     print("End of the extra task")
 
 
