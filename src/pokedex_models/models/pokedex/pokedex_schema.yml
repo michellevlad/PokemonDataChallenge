@@ -1,0 +1,74 @@
+version: 2
+
+models:
+  - name: fast_ice_pokemon
+    description: Table contains all Ice pokemon that are the fastest by generation.
+    columns:
+      - name: name
+        description: Pokemon name
+      - name: type
+        description: Pokemon type
+      - name: generation
+        generation: Generation that pokemon belongs to
+      - name: max_speed
+        description: Max speed of Ice Pokemon by generation
+
+  - name: top_pokemons_type
+    description: Aggregation of top 10 pokemons by type based on total attributes.
+    columns:
+      - name: name
+        description: Pokemon name
+      - name: type
+        description: Pokemon type
+      - name: total
+        description: Total number of attributions
+      - name: hp
+        description: Hit points (measure the strength).
+      - name: attack
+        description: Amount of attack of pokemon
+      - name: defense
+        description: Amount of defense of pokemon
+
+  - name: mega_pokemons
+    description: Table that contains all Mega pokemons from Pokedex
+    columns:
+      - name: id
+        description: Pokemon identification
+      - name: name
+        description: Pokemon name
+      - name: type_1
+        description: Pokemon principal type
+      - name: type_2
+        description: Pokemon secondary type
+      - name: total
+        description: Total number of attributions
+      - name: hp
+        description: Hit points (measure the strength).
+      - name: attack
+        description: Amount of attack of pokemon
+      - name: defense
+        description: Amount of defense of pokemon
+      - name: sp_attack
+        description: Amount of special attack of pokemon
+      - name: sp_defense
+        description: Amount of special defense of pokemon
+      - name: speed
+        description: Amount of speed of pokemon
+      - name: generation
+        description: Indicated which generation the pokemon belongs
+      - name: legendary
+        description: Indicates if pokemon is legendary
+
+
+  - name: gender_pokemon_distribution
+    description: Table from api that recollects genders by pokemon
+    columns:
+      - name: id
+        description: Pokemon identification
+      - name: name
+        description: Pokemon name
+      - name: type
+        description: Pokemon type
+      - name: gender
+        description: Indicated gender pokemon
+
