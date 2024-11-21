@@ -1,27 +1,26 @@
 name: pokemon_pipeline_3
 
-permissions:
-  contents: read
-  pull-requests: write
-  
 on:
   push:
     branches:
     - main
-  workflow_call:
-    inputs:
-      env:
-        description: 'Environment'
-        required: true
-        type: string
         
 jobs:
-  deployment:
-    name: Deploy to ${{ inputs.env }}
+  deployment_dev:
+    name: Deploy to dev
     runs-on: ubuntu-latest
     environment: dev
     steps:
-      - name: Deploy to ${{ inputs.env }}
-        run: echo "Deploying to ${{ inputs.env }}"
+      - name: Deploy to dev
+        run: echo "Deploying to dev"
       - name: Run a one-line script
-        run: echo "Hello, ${{ github.event.inputs.environment }}!"
+        run: echo "Hello there!"
+  deployment_prod:
+    name: Deploy to prod
+    runs-on: ubuntu-latest
+    environment: prod
+    steps:
+      - name: Deploy to prod
+        run: echo "Deploying to prod"
+      - name: Run a one-line script
+        run: echo "Hello there!"
