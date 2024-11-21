@@ -1,0 +1,34 @@
+name: pokemon_pipeline_1
+
+on:
+  push:
+    branches:
+      - main 
+  workflow_dispatch:  # Allow manual trigger for the second flow
+
+jobs:
+  first_flow:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Run initial steps
+        run: |
+          echo "This is the first flow"
+          # Add your terminal commands for the first flow here
+          echo "Running initial steps"
+
+  # Second flow with manual trigger
+  second_flow:
+    needs: first_flow  # Ensure this job runs after the first flow
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event_name == 'push' }}  # Only run this flow if triggered manually or from push
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Manual step, run terminal commands
+        run: |
+          echo "This is the second flow, triggered manually"
+          echo "Running manual terminal commands"
