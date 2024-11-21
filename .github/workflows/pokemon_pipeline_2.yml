@@ -1,0 +1,19 @@
+name: pokemon_pipeline_2
+on:
+  workflow_dispatch:
+    inputs:
+      manual_approval:
+        description: 'Manual approval to prod'
+        required: true
+        type: choice
+        options:
+        - approve
+        - cancel
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Run a one-line script
+        run: echo "Hello, ${{ github.event.inputs.environment }}!"
