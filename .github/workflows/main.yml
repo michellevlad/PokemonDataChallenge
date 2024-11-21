@@ -18,17 +18,22 @@ jobs:
           echo "This is the first flow"
           # Add your terminal commands for the first flow here
           echo "Running initial steps"
+      - name: Wait for approval to continue to second flow
+        run: |
+          echo "Waiting for approval..."
+          # The 'yes/no' decision can be handled via external input or by using a manual trigger later.
 
   # Second flow with manual trigger
   second_flow:
     needs: first_flow  # Ensure this job runs after the first flow
-    if: ${{ github.event_name == 'workflow_dispatch' || github.event_name == 'push' }}  # Only run this flow if triggered manually or from push
+    if: ${{ github.event_name == 'workflow_dispatch' }}  # Only run if manually triggered
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Manual step, run terminal commands
+      - name: Run terminal commands
         run: |
           echo "This is the second flow, triggered manually"
+          # Add terminal commands for the second flow here
           echo "Running manual terminal commands"
