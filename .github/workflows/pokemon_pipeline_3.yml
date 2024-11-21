@@ -1,4 +1,9 @@
 name: pokemon_pipeline_3
+
+permissions:
+  contents: read
+  pull-requests: write
+  
 on:
   push:
     branches:
@@ -9,13 +14,14 @@ on:
         description: 'Environment'
         required: true
         type: string
+        
 jobs:
   deployment:
     name: Deploy to ${{ inputs.env }}
     runs-on: ubuntu-latest
     environment: ${{ inputs.env }}
     steps:
-      -  name: Deploy to ${{ inputs.env }}
-         run: echo "Deploying to ${{ inputs.env }}"
+      - name: Deploy to ${{ inputs.env }}
+        run: echo "Deploying to ${{ inputs.env }}"
       - name: Run a one-line script
         run: echo "Hello, ${{ github.event.inputs.environment }}!"
