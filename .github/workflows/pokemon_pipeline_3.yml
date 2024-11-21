@@ -19,7 +19,7 @@ jobs:
   deployment:
     name: Deploy to ${{ inputs.env }}
     runs-on: ubuntu-latest
-    environment: ${{ inputs.env }}
+    environment: dev
     steps:
       - name: Deploy to ${{ inputs.env }}
         run: echo "Deploying to ${{ inputs.env }}"
