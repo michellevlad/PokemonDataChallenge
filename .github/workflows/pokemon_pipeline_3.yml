@@ -2,13 +2,10 @@ name: pokemon_pipeline_3
 on:
   workflow_dispatch:
     inputs:
-      manual_approval:
-        description: 'Manual approval to prod'
+      env:
+        description: 'Environment'
         required: true
-        type: choice
-        options:
-        - approve
-        - cancel
+        type: string
 jobs:
   deployment:
     name: Deploy to ${{ inputs.env }}
@@ -18,5 +15,4 @@ jobs:
       -  name: Deploy to ${{ inputs.env }}
          run: echo "Deploying to ${{ inputs.env }}"
       - name: Run a one-line script
-        if: "${{ github.event.inputs.manual_approval == 'approve' }}"
         run: echo "Hello, ${{ github.event.inputs.environment }}!"
