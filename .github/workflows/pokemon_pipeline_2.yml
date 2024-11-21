@@ -16,5 +16,5 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Run a one-line script
-        if: "${{ github.event.inputs.manual_approval = 'approve' }}"
+        if: "${{ github.event.inputs.manual_approval == 'approve' }}"
         run: echo "Hello, ${{ github.event.inputs.environment }}!"
